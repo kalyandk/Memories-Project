@@ -1,3 +1,2 @@
 # "Memories-Project" 
-Visit below URL to view the website
-https://memories-dk.netlify.app/
+Visit https://memories-dk.netlify.app/ to view the website
