@@ -1,0 +1,2 @@
+FRONT END NETLIFY: https://memories-dk.netlify.app/
+BACKEND HEROKU https://memories-project-dk.herokuapp.com/posts

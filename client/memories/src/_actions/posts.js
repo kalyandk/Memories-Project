@@ -1,4 +1,4 @@
-import {FETCH_ALL, CREATE, DELETE, UPDATE} from '../constants/actionTypes'
+import {FETCH_ALL, CREATE, DELETE, UPDATE} from '../_constants/actionTypes'
 import * as api from '../api'
 
 // Action Creators
@@ -33,21 +33,21 @@ export const updatePost = (id, updatedPost) => async (dispatch) => {
 }
 
 export const deletePost = (id) => async (dispatch) => {
-    try {
-        await api.deletePost(id)
+  try {
+    await api.deletePost(id)
 
-        dispatch({ type: DELETE, payload: id})
-    } catch (error) {
-        console.log(error)
-    }
+    dispatch({ type: DELETE, payload: id})
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const likePost = (id) => async (dispatch) => {
-    try {
-        const { data } = await api.likePost(id)
+  try {
+    const { data } = await api.likePost(id)
 
-        dispatch({ type: UPDATE, payload: data })
-    } catch (error) {
-        console.log(error)
-    }
+    dispatch({ type: UPDATE, payload: data })
+  } catch (error) {
+      console.log(error)
+  }
 }
