@@ -20,7 +20,7 @@ app.use('/posts', postRoutes)
 app.use('/users', userRoutes)
 
 app.get('/', (req, res) => {
-    res.send('Hello welcome to Memories API')
+    res.send('This is Memories API')
 })
 
 // DB
