@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { AppBar, Avatar, Typography, Toolbar, Button } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
-import FlashMessage from 'react-flash-message'
 import decode from 'jwt-decode'
 
 
@@ -12,11 +11,9 @@ import useStyles from './styles'
 function Navbar() {
   const classes = useStyles()
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
-
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation(); // The useLocation hook returns the location object that represents the current URL.
-  let isTokenExpired = false;
 
   const logout = () => {
     dispatch({ type: 'LOGOUT' });
@@ -34,23 +31,20 @@ function Navbar() {
       const decodedToken = decode(token)
 
       if (decodedToken.exp * 1000 < new Date().getTime()) {
-        isTokenExpired = true;
+        console.log('token expired')
         logout()
       }
     }
+    // var interval = setInterval(() => console.log('interval'), 10000)
 
     setUser(JSON.parse(localStorage.getItem('profile')))
+   
   }, [location]) // trigger useEffect when the URL changes
 
 
   return (
     
     <AppBar className={classes.appBar} position='static' color='inherit'>
-      {isTokenExpired &&
-        <FlashMessage duration={5000}>
-          <strong>I will disapper in 5 seconds!</strong>
-        </FlashMessage>
-      }
       <div className={classes.brandContainer}>
         <Typography className={classes.heading} variant='h2' align='center' >Memo</Typography>
         <img className={classes.image} src={memories} alt='memories'  height='60'/>
